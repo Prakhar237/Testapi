@@ -3,26 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Info Viewer</title>
+  <title>JSON API</title>
 </head>
 <body>
-  <h1>User Info</h1>
-  <div id="user-info">
-    Loading...
-  </div>
+  <h1>JSON API</h1>
+  <p>API endpoint: <a href="/user-info">/user-info</a></p>
+  <div id="result"></div>
+  
   <script>
     fetch('/user-info')
       .then(response => response.json())
       .then(data => {
-        document.getElementById('user-info').innerHTML = `
-          <p><strong>Username:</strong> ${data.Username}</p>
-          <p><strong>Email:</strong> ${data.Email}</p>
-          <p><strong>Country:</strong> ${data.Country}</p>
-          <p><strong>Video State:</strong> ${data.Video}</p>
-        `;
+        document.getElementById('result').innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
       })
-      .catch(err => {
-        document.getElementById('user-info').textContent = 'Failed to load user info.';
+      .catch(error => {
+        document.getElementById('result').innerHTML = 'Error: ' + error.message;
       });
   </script>
 </body>

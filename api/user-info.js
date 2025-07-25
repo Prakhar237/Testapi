@@ -4,6 +4,16 @@ const supabaseUrl = 'https://yorfzusldrvboybodxqn.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlvcmZ6dXNsZHJ2Ym95Ym9keHFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM0MzI2OTEsImV4cCI6MjA2OTAwODY5MX0.-DUZQQdcy-c60ht6-dVy4yCtzDrKRLE4W_J0nmI5hEs';
 
 export default async function handler(req, res) {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
   }

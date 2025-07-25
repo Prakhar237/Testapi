@@ -1,15 +1,14 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/user-info.js",
-      "use": "@vercel/node"
+  "functions": {
+    "api/user-info.js": {
+      "runtime": "@vercel/node"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/user-info",
-      "dest": "/api/user-info.js"
+      "dest": "/api/user-info"
     },
     {
       "src": "/(.*)",
