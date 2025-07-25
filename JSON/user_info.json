@@ -1,0 +1,10 @@
+{
+  "datatest": [
+    {
+      "Username": "example_user",
+      "Email": "user@example.com",
+      "Country": "Exampleland",
+      "Video": true
+    }
+  ]
+} 
