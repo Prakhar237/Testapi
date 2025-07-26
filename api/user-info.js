@@ -23,7 +23,7 @@ export default async function handler(req, res) {
     
     const { data, error } = await supabase
       .from('toggle_state')
-      .select('is_active')
+      .select('is_active, youtube_link')
       .single();
 
     if (error) {
@@ -35,7 +35,8 @@ export default async function handler(req, res) {
       Username: 'example_user',
       Email: 'user@example.com',
       Country: 'Exampleland',
-      Video: data.is_active
+      Video: data.is_active,
+      YoutubeLink: data.youtube_link || ''
     };
 
     const output = {
